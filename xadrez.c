@@ -1,5 +1,29 @@
 #include <stdio.h>
 
+void torre(int casas){   //criando a recursividade para o movimento da torre
+    if(casas > 0){
+        printf("Moveu uma casa para direita\n");
+
+        torre(casas - 1);
+    }
+}
+
+void rainha(int casas){    //criando a recursividade para o movimento da rainha
+    if(casas > 0){
+        printf("Moveu uma casa para direita\n");
+
+        rainha(casas - 1);
+    }
+}
+
+void bispo(int casas){        //criando a recursividade para o movimento do bispo
+    if(casas > 0){
+        printf("Moveu uma casa para cima e direita\n");
+
+        bispo(casas - 1);
+    }
+}
+
 int main(){
 
     //criando as variaveis para usar no for e nos swithcs
@@ -11,7 +35,8 @@ int main(){
     printf("1. Torre.\n");
     printf("2. Rainha.\n");
     printf("3. Bispo.\n");
-    printf("Escolha uma peça para mover 5 casas: ");
+    printf("4. Cavalo.\n");
+    printf("Escolha uma peça para mover: ");
     scanf("%d" , &x);
 
     printf(" \n");
@@ -20,143 +45,87 @@ int main(){
     switch (x)
     {
     case 1:
-        //outro menu para o usuario escolher a direção que quer mover a peça e abaixo a logica do for para mostrar o resultado da ação escolhida pelo usuario
-        printf("1. Direita\n");
-        printf("2. Esquerda\n");
-        printf("3. Cima\n");
-        printf("4. Baixo\n");
-        printf("Escolha a direção que você ira mover a torre: ");
-        scanf("%d" , &z);
-        switch (z)
-        {
-        case 1:
-            for(y = 1; y <= 5; y++){
-            printf("Torre moveu uma casa para direita\n");
-        }
-        break;
-        case 2:
-            for(y = 1; y <= 5; y++){
-            printf("Torre moveu uma casa para esquerda\n");
-        }
-        break;
-        case 3:
-            for(y = 1; y <= 5; y++){
-            printf("Torre moveu uma casa para cima\n");
-        }
-        break;
-        case 4:
-            for(y = 1; y <= 5; y++){
-            printf("Torre moveu uma casa para baixo\n");
-        }
-        break;
-        default:
-        printf("Opção invalida.");
-            break;
-        }
-        
+        torre(5);  //recursividade da torre mandando mover 5 casas para direita
         break;
     case 2:
-        //outro menu para o usuario escolher a direção que quer mover a peça e abaixo a logica do for para mostrar o resultado da ação escolhida pelo usuario
-        printf("1. Direita\n");
-        printf("2. Esquerda\n");
-        printf("3. Cima\n");
-        printf("4. Baixo\n");
-        printf("5. Cima direita\n");
-        printf("6. Cima esquerda\n");
-        printf("7. Baixo esquerda\n");
-        printf("8. Baixo direita\n");
-        printf("Escolha a direção que você ira mover a rainha: ");
-        scanf("%d" , &z);
-        switch (z)
-        {
-        case 1:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para direita\n");
-        }
-        break;
-        case 2:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para esquerda\n");
-        }
-        break;
-        case 3:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para cima\n");
-        }
-        break;
-        case 4:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para baixo\n");
-        }
-        break;
-        case 5:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para cima direita\n");
-        }
-        break;
-        case 6:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para cima esquerda\n");
-        }
-        break;
-        case 7:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para baixo esquerda\n");
-        }
-        break;
-        case 8:
-            for(y = 1; y <= 5; y++){
-            printf("Rainha moveu uma casa para baixo direita\n");
-        }
-        break;
-        default:
-        printf("Opção invalida.");
-            break;
-        }
+        rainha(8);  //recursividade da rainha mandando mover 8 casas para direita
         break;
     case 3:
-        //outro menu para o usuario escolher a direção que quer mover a peça e abaixo a logica do for para mostrar o resultado da ação escolhida pelo usuario
-        printf("1. Cima direita\n");
+        bispo(5);   //recursividade do bispo mandando mover 5 casas para cima e direita
+        break;
+    case 4:
+        printf("1. Cima direita\n");  //menu interativo para o usuario escolher a direção que o cavalo ira andar
         printf("2. Cima esquerda\n");
         printf("3. Baixo esquerda\n");
         printf("4. Baixo direita\n");
-        printf("Escolha a direção que você ira mover o bispo: ");
+        printf("Escolha a direção que você ira mover o cavalo: ");
         scanf("%d" , &z);
-        switch (z)
+
+        int movimento, i;  // criando as variaveis para a logica do movimento do cavalo
+        movimento = 1;
+
+        switch (z) //logica para o movimento do cavalo
         {
-        case 1:
-            for(y = 1; y <= 5; y++){
-            printf("Bispo moveu uma casa para cima direita\n");
-        }
-        break;
+        case 1:           
+
+            while(movimento--){  
+
+                for(i = 0; i < 2; i++){
+                    printf("Cavalo moveu uma casa para cima\n");
+                }
+
+                printf("Cavalo moveu uma casa para direita\n");
+            }
+            break;
         case 2:
-            for(y = 1; y <= 5; y++){
-            printf("Bispo moveu uma casa para cima esquerda\n");
-        }
+
+            while(movimento--){
+
+                for(i = 0; i < 2; i++){
+                   printf("Cavalo moveu uma casa para cima\n");
+                }
+
+                printf("Cavalo moveu uma casa para esquerda\n");
+            }
         break;
         case 3:
-            for(y = 1; y <= 5; y++){
-            printf("Bispo moveu uma casa para baixo esquerda\n");
-        }
+
+            while(movimento--){
+
+                for(i = 0; i < 2; i++){
+                    printf("Cavalo moveu uma casa para baixo\n");
+                }
+
+                printf("Cavalo moveu uma casa para esquerda\n");
+            }
         break;
         case 4:
-            for(y = 1; y <= 5; y++){
-            printf("Bispo moveu uma casa para baixo direita\n");
-        }
+
+            while(movimento--){
+
+                for(i = 0; i < 2; i++){
+                    printf("Cavalo moveu uma casa para baixo\n");
+                }
+
+                printf("Cavalo moveu uma casa para direita\n");
+            }
         break;
         default:
-        printf("Opção invalida.");
+            printf("Opção invalida.\n");
             break;
         }
+
         break;
-    
     default:
         printf("Opção invalida.\n");
         break;
     }
 
+
     printf(" \n");
+    
     //fim do jogo
+
     printf("Obrigado por jogar ;)\n");
 
     return 0;
